@@ -24,38 +24,32 @@ def main():
         """
 
         # 構文解析(属性, 行番号, 深さ, 関係性, nodeID)
-        attrs, lines, depths, rels, noAttrs = walk(ast.parse(''.join(src)), [], 0)
-
+        attrs, lines, depths, rels, noAttrs, contents = walk(ast.parse(''.join(src)), [], 0)
         # 抽象構文木の生成
-        nodes, dmax = Node.getNode(rels, attrs, depths, lines)
+        nodes, dmax = Node.getNode(rels, attrs, depths, lines, contents)
 
         k = 3
         # 深さk以上のnode間の類似度計量
         exacts, similars = Node.calSimilar(k, nodes, rels, dmax)
 
-        print(similars)
-        print(exacts)
         n = 6
-        print("---")
         for t1, t2 in exacts[n]:
             lines1 = Node.selectLine(nodes[t1], set())
             lines2 = Node.selectLine(nodes[t2], set())
-
-            src1 = src[min(lines1)-1:max(lines1)]
-            src2 = src[min(lines2)-1:max(lines2)]
+            src1 = src[min(lines1) - 1:max(lines1)]
+            src2 = src[min(lines2) - 1:max(lines2)]
+            Node.selectDiff(t1, t2)
 
             template = ["def function{}():\n", "return"]
             template[1:1] = src1
-            # template[1:1]
+
             print(''.join(template))
 
 
-def walk(node, nodes, pindex, indent=0, attrs=[], lines=[], depths=[], rels=[], noAttrs=[]):
-    for f in ast.iter_fields(node):
-        print(f)
-    print("---")
+def walk(node, nodes, pindex, indent=0, attrs=[], lines=[], depths=[], rels=[], noAttrs=[], contents=[]):
     depths.append(int(indent))
     attrs.append(node.__class__.__name__)
+    contents.append(ast.unparse(node))
     if hasattr(node, 'lineno'):
         lines.append(node.lineno)
     else:
@@ -69,7 +63,7 @@ def walk(node, nodes, pindex, indent=0, attrs=[], lines=[], depths=[], rels=[], 
     for n in ast.iter_child_nodes(node):
         walk(n, nodes, index, indent + 1, attrs, lines, depths, rels, noAttrs)
 
-    return attrs, lines, depths, rels, noAttrs
+    return attrs, lines, depths, rels, noAttrs, contents
 
 
 class Node:
@@ -83,9 +77,10 @@ class Node:
         self.line = None
         self.dist = 0
         self.depth = None
+        self.content = None
 
     @staticmethod
-    def getNode(rels, attrs, depths, lines):
+    def getNode(rels, attrs, depths, lines, contents):
         cntRels = Counter(list(itertools.chain.from_iterable(rels)))
         N = len(rels)
         nodes = [Node() for _ in range(N + 1)]
@@ -98,6 +93,7 @@ class Node:
             k = cntRels[nodeID] - 1
             nodes[n + 1].id = nodeID
             nodes[n + 1].elem = attrs[nodeID]
+            nodes[n + 1].content = contents[nodeID]
             if k > 0:
                 nodes[n + 1].children = [nodes[r[0]] for r in rels if r[1] == nodeID]
                 nodes[n + 1].type = 'inner'
@@ -106,7 +102,7 @@ class Node:
                 leafs.append(nodes[n + 1].id)
             for child in nodes[n + 1].children:
                 child.parent = nodeID
-            nodes[n + 1].line = lines[n+1]
+            nodes[n + 1].line = lines[n + 1]
         for leaf in leafs:
             Node.calDist(nodes, leaf)
         Node.calDepth(nodes[0])
@@ -172,6 +168,27 @@ class Node:
         for child in node.children:
             Node.selectLine(child, lines)
         return list(sorted(lines))
+
+    @staticmethod
+    def showChild(node):
+        print('-----')
+        print(node.id, node.elem)
+        print(node.content)
+        for child in node.children:
+            Node.showChild(child)
+        print('-----')
+
+    @staticmethod
+    def selectDiff(t1, t2, diffs=[]):
+        if checkTarget(t1, t2, ['Name', 'Constant']):
+            t1.ID
+        for c1, c2 in zip(t1.children, t2.children):
+            Node.selectDiff(c1, c2, diffs)
+
+        def checkTarget(t1, t2, targets):
+            checkElem = t1.elem in targets and t2 in targets
+            checkContent = t1.content != t2.content
+            return checkElem and checkContent
 
 
 def strdist(s1, s2):

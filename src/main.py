@@ -37,8 +37,8 @@ def main():
         # Node.showChild(nodes[32], "cols")
 
         n = 6
-        for t1, t2 in exacts[n]:
-            srcAfter = Node.createDef(src, t1, t2, nodes, n, 1)
+        for id1, id2 in exacts[n]:
+            srcAfter = Node.createDef(src, nodes[id1], nodes[id2], nodes, n, 1)
 
         with open("../data/result/src/output_"+os.path.basename(pathSrc), 'w') as f:
             f.write(''.join(srcAfter))
@@ -186,33 +186,38 @@ class Node:
             Node.showChild(child, varInstance)
 
     @staticmethod
-    def selectDiff(t1, t2, diffs=[]):
+    def selectArgs(nodes, t1, t2, args=[], returns=[]):
         targets = ['Name', 'Constant']
-        # checkElem = t1.elem in targets and t2.elem in targets
         builtins = dir(__builtins__)
-        checkName = all([t1.elem == t2.elem == 'Name', t1.content not in builtins, t2.content not in builtins])
-        checkConstant = all([t1.elem == t2.elem == 'Constant', t1.content != t2.content])
+        checkName = all([t1.elem == 'Name', t1.content not in builtins])
+        if checkName:
+            if len(t1.children) == 1 and t1.children[0] == 'store':
+                checkName = False
+                returns.append([t1, t2])
+        checkConstant = all([t1.elem == 'Constant', t1.content != t2.content])
         if checkName or checkConstant:
-            diffs.append([t1.id, t2.id])
+            args.append([t1, t2])
         for c1, c2 in zip(t1.children, t2.children):
-            Node.selectDiff(c1, c2, diffs)
-        return diffs
+            Node.selectArgs(nodes, c1, c2, args, returns)
+        return args, returns
 
     @staticmethod
     def createDef(src, t1, t2, nodes, n, nFunc):
-        lines1 = Node.selectLine(nodes[t1], set())
-        lines2 = Node.selectLine(nodes[t2], set())
-        diffs = Node.selectDiff(nodes[t1], nodes[t2])
+        lines1 = Node.selectLine(t1, set())
+        lines2 = Node.selectLine(t2, set())
+        args, returns = Node.selectArgs(nodes, t1, t2)
+        variables = args + returns
         indent = 0
-        dirVar1, dirVar2 = {}, {}
+        dirVars1 = {var[0].content: i+1 for i, var in enumerate(variables)}
+        dirVars2 = {var[1].content: i+1 for i, var in enumerate(variables)}
         dirLine1, dirLine2 = {}, {}
         for c in src[min(lines1)]:
             if c == '  ':
                 indent += 1
         n = 1
-        for id1, id2 in diffs:
-            src, dirVar1, dirLine1 = Node.updateSrc(src, nodes[id1], dirVar1, dirLine1, n)
-            src, dirVar2, dirLine2 = Node.updateSrc(src, nodes[id2], dirVar2, dirLine2, n)
+        for d1, d2 in variables:
+            src, dirVar1, dirLine1 = Node.updateSrc(src, d1, dirVars1, dirLine1, n)
+            src, dirVar2, dirLine2 = Node.updateSrc(src, d2, dirVars2, dirLine2, n)
             n += 1
         srcFunction = src[min(lines1) - 1:max(lines1)]
         for i, line in enumerate(srcFunction):
@@ -233,20 +238,18 @@ class Node:
 
 
     @staticmethod
-    def updateSrc(src, node, dirVar, dirLine, n):
-        if node.content not in dirVar:
-            dirVar[node.content] = str(n)
+    def updateSrc(src, node, dirVars, dirLine, n):
         srcBefore = list(src[node.line - 1])
         if node.line - 1 not in dirLine:
-            srcBefore[node.cols[0]:node.cols[1]] = f"var{dirVar[node.content]}"
+            srcBefore[node.cols[0]:node.cols[1]] = f"var{dirVars[node.content]}"
             dirLine[node.line - 1] = len(list(src[node.line - 1])) - len(srcBefore)
         else:
             diff = dirLine[node.line - 1]
-            srcBefore[node.cols[0] - diff: node.cols[1] - diff] = f"var{dirVar[node.content]}"
+            srcBefore[node.cols[0] - diff: node.cols[1] - diff] = f"var{dirVars[node.content]}"
             dirLine[node.line - 1] += len(list(src[node.line - 1])) - len(srcBefore)
         srcUpdate = ''.join(srcBefore)
         src[node.line - 1] = srcUpdate
-        return src, dirVar, dirLine
+        return src, dirVars, dirLine
 
 
 def strdist(s1, s2):

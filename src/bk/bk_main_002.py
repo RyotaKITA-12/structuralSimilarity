@@ -18,27 +18,24 @@ def main():
         relations_node, grammars_node, contents_node, lines_node, cols_node \
                 = parse_src(tree_src)
 
-        nodes_to_replace     = Node.build_nodes_to_replace(
-                                relations_node, grammars_node,
-                                contents_node, lines_node, cols_node)
+        nodes = Node.build_nodes(
+                    relations_node, grammars_node,
+                    contents_node, lines_node, cols_node)
 
-        # nodes_for_comparison =
-
-        max_depth_original = max([node.depth for node in nodes_to_replace])
+        max_depth_original = max([node.depth for node in nodes])
         max_depth_to_extract = 5
         exact_trees, similar_trees = Node.calculate_similarity_of_tree(
-                                        nodes_to_replace,
-                                        max_depth_original,
+                                        nodes, max_depth_original,
                                         max_depth_to_extract)
 
         # n = 6
         # for id1, id2 in exact_trees[n]:
         id1 = exact_trees[max_depth_to_extract][0][0]
         id2 = exact_trees[max_depth_to_extract][0][1]
-        src_functionalized = Node.create_function(list_src, nodes_to_replace,
-                                                  nodes_to_replace[id1],
-                                                  nodes_to_replace[id2],
-                                                  num_of_func=1)
+        src_functionalized = Node.create_function(list_src, nodes,
+                                                      nodes[id1],
+                                                      nodes[id2],
+                                                      num_of_func=1)
         print(''.join(src_functionalized))
         print(exact_trees)
         # print(similar_trees)
@@ -89,7 +86,7 @@ class Node:
         self.depth = None
 
     @staticmethod
-    def build_nodes_to_replace(relations, grammars, contents, lines, cols):
+    def build_nodes(relations, grammars, contents, lines, cols):
         num_node = len(relations)
         nodes = [Node() for _ in range(num_node + 1)]
         dic_count_child = Counter(list(chain.from_iterable(relations)))

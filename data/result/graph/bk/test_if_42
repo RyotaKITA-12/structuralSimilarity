@@ -1,0 +1,134 @@
+digraph {
+	0 [label="If
+if A[j] < A[i]:
+    (A[i], A[j]) = (A[j], A[i])"]
+	1 [label="Compare
+A[j] < A[i]"]
+	0 -> 1
+	2 [label="Subscript
+A[j]"]
+	1 -> 2
+	3 [label="Name
+A"]
+	2 -> 3
+	4 [label=Load
+]
+	3 -> 4
+	5 [label="Name
+j"]
+	2 -> 5
+	6 [label=Load
+]
+	5 -> 6
+	7 [label=Load
+]
+	2 -> 7
+	8 [label=Lt
+]
+	1 -> 8
+	9 [label="Subscript
+A[i]"]
+	1 -> 9
+	10 [label="Name
+A"]
+	9 -> 10
+	11 [label=Load
+]
+	10 -> 11
+	12 [label="Name
+i"]
+	9 -> 12
+	13 [label=Load
+]
+	12 -> 13
+	14 [label=Load
+]
+	9 -> 14
+	15 [label="Assign
+(A[i], A[j]) = (A[j], A[i])"]
+	0 -> 15
+	16 [label="Tuple
+(A[i], A[j])"]
+	15 -> 16
+	17 [label="Subscript
+A[i]"]
+	16 -> 17
+	18 [label="Name
+A"]
+	17 -> 18
+	19 [label=Load
+]
+	18 -> 19
+	20 [label="Name
+i"]
+	17 -> 20
+	21 [label=Load
+]
+	20 -> 21
+	22 [label=Store
+]
+	17 -> 22
+	23 [label="Subscript
+A[j]"]
+	16 -> 23
+	24 [label="Name
+A"]
+	23 -> 24
+	25 [label=Load
+]
+	24 -> 25
+	26 [label="Name
+j"]
+	23 -> 26
+	27 [label=Load
+]
+	26 -> 27
+	28 [label=Store
+]
+	23 -> 28
+	29 [label=Store
+]
+	16 -> 29
+	30 [label="Tuple
+(A[j], A[i])"]
+	15 -> 30
+	31 [label="Subscript
+A[j]"]
+	30 -> 31
+	32 [label="Name
+A"]
+	31 -> 32
+	33 [label=Load
+]
+	32 -> 33
+	34 [label="Name
+j"]
+	31 -> 34
+	35 [label=Load
+]
+	34 -> 35
+	36 [label=Load
+]
+	31 -> 36
+	37 [label="Subscript
+A[i]"]
+	30 -> 37
+	38 [label="Name
+A"]
+	37 -> 38
+	39 [label=Load
+]
+	38 -> 39
+	40 [label="Name
+i"]
+	37 -> 40
+	41 [label=Load
+]
+	40 -> 41
+	42 [label=Load
+]
+	37 -> 42
+	43 [label=Load
+]
+	30 -> 43
+}

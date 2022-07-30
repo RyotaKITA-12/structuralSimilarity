@@ -1,0 +1,57 @@
+digraph {
+	0 [label="Module
+df_2 = df
+df_2.dropna(how='any', inplace=True)
+df_2" penwidth=3]
+	1 [label="Assign
+df_2 = df" penwidth=3]
+	2 [label="Name
+df_2" penwidth=3]
+	1 -> 2
+	3 [label=Store
+ penwidth=3]
+	2 -> 3
+	4 [label="Name
+df" penwidth=3]
+	1 -> 4
+	5 [label=Load
+ penwidth=3]
+	4 -> 5
+	6 [label="Expr
+df_2.dropna(how='any', inplace=True)" penwidth=3]
+	7 [label="Call
+df_2.dropna(how='any', inplace=True)" penwidth=3]
+	6 -> 7
+	8 [label="Attribute
+df_2.dropna" penwidth=3]
+	7 -> 8
+	9 [label="Name
+df_2" penwidth=3]
+	8 -> 9
+	10 [label=Load
+ penwidth=3]
+	9 -> 10
+	11 [label=Load
+ penwidth=3]
+	8 -> 11
+	12 [label="keyword
+how='any'" penwidth=3]
+	7 -> 12
+	13 [label="Constant
+'any'" penwidth=3]
+	12 -> 13
+	14 [label="keyword
+inplace=True" penwidth=3]
+	7 -> 14
+	15 [label="Constant
+True" penwidth=3]
+	14 -> 15
+	16 [label="Expr
+df_2" penwidth=3]
+	17 [label="Name
+df_2" penwidth=3]
+	16 -> 17
+	18 [label=Load
+ penwidth=3]
+	17 -> 18
+}

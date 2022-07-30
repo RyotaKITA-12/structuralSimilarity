@@ -1,0 +1,198 @@
+digraph {
+	0 [label="Module
+X = df.drop('Y', axis=1).values
+y = df['Y'].values
+(X_train, X_test, y_train, y_test) = train_test_split(X, y, test_size=0.2, random_state=0)
+data = {'train': {'X': X_train, 'y': y_train}, 'test': {'X': X_test, 'y': y_test}}" penwidth=3]
+	1 [label="Assign
+X = df.drop('Y', axis=1).values" penwidth=3]
+	2 [label="Name
+X" penwidth=3]
+	1 -> 2
+	3 [label=Store
+ penwidth=3]
+	2 -> 3
+	4 [label="Attribute
+df.drop('Y', axis=1).values" penwidth=3]
+	1 -> 4
+	5 [label="Call
+df.drop('Y', axis=1)" penwidth=3]
+	4 -> 5
+	6 [label="Attribute
+df.drop" penwidth=3]
+	5 -> 6
+	7 [label="Name
+df" penwidth=3]
+	6 -> 7
+	8 [label=Load
+ penwidth=3]
+	7 -> 8
+	9 [label=Load
+ penwidth=3]
+	6 -> 9
+	10 [label="Constant
+'Y'" penwidth=3]
+	5 -> 10
+	11 [label="keyword
+axis=1" penwidth=3]
+	5 -> 11
+	12 [label="Constant
+1" penwidth=3]
+	11 -> 12
+	13 [label=Load
+ penwidth=3]
+	4 -> 13
+	14 [label="Assign
+y = df['Y'].values" penwidth=3]
+	15 [label="Name
+y" penwidth=3]
+	14 -> 15
+	16 [label=Store
+ penwidth=3]
+	15 -> 16
+	17 [label="Attribute
+df['Y'].values" penwidth=3]
+	14 -> 17
+	18 [label="Subscript
+df['Y']" penwidth=3]
+	17 -> 18
+	19 [label="Name
+df" penwidth=3]
+	18 -> 19
+	20 [label=Load
+ penwidth=3]
+	19 -> 20
+	21 [label="Constant
+'Y'" penwidth=3]
+	18 -> 21
+	22 [label=Load
+ penwidth=3]
+	18 -> 22
+	23 [label=Load
+ penwidth=3]
+	17 -> 23
+	24 [label="Assign
+(X_train, X_test, y_train, y_test) = train_test_split(X, y, test_size=0.2, random_state=0)" penwidth=3]
+	25 [label="Tuple
+(X_train, X_test, y_train, y_test)" penwidth=3]
+	24 -> 25
+	26 [label="Name
+X_train" penwidth=3]
+	25 -> 26
+	27 [label=Store
+ penwidth=3]
+	26 -> 27
+	28 [label="Name
+X_test" penwidth=3]
+	25 -> 28
+	29 [label=Store
+ penwidth=3]
+	28 -> 29
+	30 [label="Name
+y_train" penwidth=3]
+	25 -> 30
+	31 [label=Store
+ penwidth=3]
+	30 -> 31
+	32 [label="Name
+y_test" penwidth=3]
+	25 -> 32
+	33 [label=Store
+ penwidth=3]
+	32 -> 33
+	34 [label=Store
+ penwidth=3]
+	25 -> 34
+	35 [label="Call
+train_test_split(X, y, test_size=0.2, random_state=0)" penwidth=3]
+	24 -> 35
+	36 [label="Name
+train_test_split" penwidth=3]
+	35 -> 36
+	37 [label=Load
+ penwidth=3]
+	36 -> 37
+	38 [label="Name
+X" penwidth=3]
+	35 -> 38
+	39 [label=Load
+ penwidth=3]
+	38 -> 39
+	40 [label="Name
+y" penwidth=3]
+	35 -> 40
+	41 [label=Load
+ penwidth=3]
+	40 -> 41
+	42 [label="keyword
+test_size=0.2" penwidth=3]
+	35 -> 42
+	43 [label="Constant
+0.2" penwidth=3]
+	42 -> 43
+	44 [label="keyword
+random_state=0" penwidth=3]
+	35 -> 44
+	45 [label="Constant
+0" penwidth=3]
+	44 -> 45
+	46 [label="Assign
+data = {'train': {'X': X_train, 'y': y_train}, 'test': {'X': X_test, 'y': y_test}}" penwidth=3]
+	47 [label="Name
+data" penwidth=3]
+	46 -> 47
+	48 [label=Store
+ penwidth=3]
+	47 -> 48
+	49 [label="Dict
+{'train': {'X': X_train, 'y': y_train}, 'test': {'X': X_test, 'y': y_test}}" penwidth=3]
+	46 -> 49
+	50 [label="Constant
+'train'" penwidth=3]
+	49 -> 50
+	51 [label="Constant
+'test'" penwidth=3]
+	49 -> 51
+	52 [label="Dict
+{'X': X_train, 'y': y_train}" penwidth=3]
+	49 -> 52
+	53 [label="Constant
+'X'" penwidth=3]
+	52 -> 53
+	54 [label="Constant
+'y'" penwidth=3]
+	52 -> 54
+	55 [label="Name
+X_train" penwidth=3]
+	52 -> 55
+	56 [label=Load
+ penwidth=3]
+	55 -> 56
+	57 [label="Name
+y_train" penwidth=3]
+	52 -> 57
+	58 [label=Load
+ penwidth=3]
+	57 -> 58
+	59 [label="Dict
+{'X': X_test, 'y': y_test}" penwidth=3]
+	49 -> 59
+	60 [label="Constant
+'X'" penwidth=3]
+	59 -> 60
+	61 [label="Constant
+'y'" penwidth=3]
+	59 -> 61
+	62 [label="Name
+X_test" penwidth=3]
+	59 -> 62
+	63 [label=Load
+ penwidth=3]
+	62 -> 63
+	64 [label="Name
+y_test" penwidth=3]
+	59 -> 64
+	65 [label=Load
+ penwidth=3]
+	64 -> 65
+}

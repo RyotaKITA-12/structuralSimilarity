@@ -1,0 +1,120 @@
+digraph {
+	0 [label="Module
+preds = reg_model.predict(data['test']['X'])
+mse = mean_squared_error(preds, y_test)
+metrics = {'mse': mse}
+print(metrics)" penwidth=3]
+	1 [label="Assign
+preds = reg_model.predict(data['test']['X'])" penwidth=3]
+	2 [label="Name
+preds" penwidth=3]
+	1 -> 2
+	3 [label=Store
+ penwidth=3]
+	2 -> 3
+	4 [label="Call
+reg_model.predict(data['test']['X'])" penwidth=3]
+	1 -> 4
+	5 [label="Attribute
+reg_model.predict" penwidth=3]
+	4 -> 5
+	6 [label="Name
+reg_model" penwidth=3]
+	5 -> 6
+	7 [label=Load
+ penwidth=3]
+	6 -> 7
+	8 [label=Load
+ penwidth=3]
+	5 -> 8
+	9 [label="Subscript
+data['test']['X']" penwidth=3]
+	4 -> 9
+	10 [label="Subscript
+data['test']" penwidth=3]
+	9 -> 10
+	11 [label="Name
+data" penwidth=3]
+	10 -> 11
+	12 [label=Load
+ penwidth=3]
+	11 -> 12
+	13 [label="Constant
+'test'" penwidth=3]
+	10 -> 13
+	14 [label=Load
+ penwidth=3]
+	10 -> 14
+	15 [label="Constant
+'X'" penwidth=3]
+	9 -> 15
+	16 [label=Load
+ penwidth=3]
+	9 -> 16
+	17 [label="Assign
+mse = mean_squared_error(preds, y_test)" penwidth=3]
+	18 [label="Name
+mse" penwidth=3]
+	17 -> 18
+	19 [label=Store
+ penwidth=3]
+	18 -> 19
+	20 [label="Call
+mean_squared_error(preds, y_test)" penwidth=3]
+	17 -> 20
+	21 [label="Name
+mean_squared_error" penwidth=3]
+	20 -> 21
+	22 [label=Load
+ penwidth=3]
+	21 -> 22
+	23 [label="Name
+preds" penwidth=3]
+	20 -> 23
+	24 [label=Load
+ penwidth=3]
+	23 -> 24
+	25 [label="Name
+y_test" penwidth=3]
+	20 -> 25
+	26 [label=Load
+ penwidth=3]
+	25 -> 26
+	27 [label="Assign
+metrics = {'mse': mse}" penwidth=3]
+	28 [label="Name
+metrics" penwidth=3]
+	27 -> 28
+	29 [label=Store
+ penwidth=3]
+	28 -> 29
+	30 [label="Dict
+{'mse': mse}" penwidth=3]
+	27 -> 30
+	31 [label="Constant
+'mse'" penwidth=3]
+	30 -> 31
+	32 [label="Name
+mse" penwidth=3]
+	30 -> 32
+	33 [label=Load
+ penwidth=3]
+	32 -> 33
+	34 [label="Expr
+print(metrics)" penwidth=3]
+	35 [label="Call
+print(metrics)" penwidth=3]
+	34 -> 35
+	36 [label="Name
+print" penwidth=3]
+	35 -> 36
+	37 [label=Load
+ penwidth=3]
+	36 -> 37
+	38 [label="Name
+metrics" penwidth=3]
+	35 -> 38
+	39 [label=Load
+ penwidth=3]
+	38 -> 39
+}

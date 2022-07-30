@@ -1,0 +1,114 @@
+digraph {
+	0 [label="Module
+args = {'alpha': 0.5}
+reg_model = Ridge(**args)
+reg_model.fit(data['train']['X'], data['train']['y'])" penwidth=3]
+	1 [label="Assign
+args = {'alpha': 0.5}" penwidth=3]
+	2 [label="Name
+args" penwidth=3]
+	1 -> 2
+	3 [label=Store
+ penwidth=3]
+	2 -> 3
+	4 [label="Dict
+{'alpha': 0.5}" penwidth=3]
+	1 -> 4
+	5 [label="Constant
+'alpha'" penwidth=3]
+	4 -> 5
+	6 [label="Constant
+0.5" penwidth=3]
+	4 -> 6
+	7 [label="Assign
+reg_model = Ridge(**args)" penwidth=3]
+	8 [label="Name
+reg_model" penwidth=3]
+	7 -> 8
+	9 [label=Store
+ penwidth=3]
+	8 -> 9
+	10 [label="Call
+Ridge(**args)" penwidth=3]
+	7 -> 10
+	11 [label="Name
+Ridge" penwidth=3]
+	10 -> 11
+	12 [label=Load
+ penwidth=3]
+	11 -> 12
+	13 [label="keyword
+**args" penwidth=3]
+	10 -> 13
+	14 [label="Name
+args" penwidth=3]
+	13 -> 14
+	15 [label=Load
+ penwidth=3]
+	14 -> 15
+	16 [label="Expr
+reg_model.fit(data['train']['X'], data['train']['y'])" penwidth=3]
+	17 [label="Call
+reg_model.fit(data['train']['X'], data['train']['y'])" penwidth=3]
+	16 -> 17
+	18 [label="Attribute
+reg_model.fit" penwidth=3]
+	17 -> 18
+	19 [label="Name
+reg_model" penwidth=3]
+	18 -> 19
+	20 [label=Load
+ penwidth=3]
+	19 -> 20
+	21 [label=Load
+ penwidth=3]
+	18 -> 21
+	22 [label="Subscript
+data['train']['X']" penwidth=3]
+	17 -> 22
+	23 [label="Subscript
+data['train']" penwidth=3]
+	22 -> 23
+	24 [label="Name
+data" penwidth=3]
+	23 -> 24
+	25 [label=Load
+ penwidth=3]
+	24 -> 25
+	26 [label="Constant
+'train'" penwidth=3]
+	23 -> 26
+	27 [label=Load
+ penwidth=3]
+	23 -> 27
+	28 [label="Constant
+'X'" penwidth=3]
+	22 -> 28
+	29 [label=Load
+ penwidth=3]
+	22 -> 29
+	30 [label="Subscript
+data['train']['y']" penwidth=3]
+	17 -> 30
+	31 [label="Subscript
+data['train']" penwidth=3]
+	30 -> 31
+	32 [label="Name
+data" penwidth=3]
+	31 -> 32
+	33 [label=Load
+ penwidth=3]
+	32 -> 33
+	34 [label="Constant
+'train'" penwidth=3]
+	31 -> 34
+	35 [label=Load
+ penwidth=3]
+	31 -> 35
+	36 [label="Constant
+'y'" penwidth=3]
+	30 -> 36
+	37 [label=Load
+ penwidth=3]
+	30 -> 37
+}

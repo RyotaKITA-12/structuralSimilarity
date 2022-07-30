@@ -1,0 +1,897 @@
+digraph {
+	0 [label="0
+Module
+A = [3, 5, 1, 9, 7, 8, 5]
+n = len(A)
+for i in range(n):
+    for j in range(i + 1, n):
+        if A[j] < A[i]:
+            (A[i], A[j]) = (A[j], A[i])
+print(A)
+A = [3, 5, 1, 9, 7, 8, 5]
+n = len(A)
+for i in range(n - 1):
+    for j in range(n - 1):
+        if A[j + 1] < A[j]:
+            (A[j], A[j + 1]) = (A[j + 1], A[j])
+print(A)
+A = [3, 5, 1, 9, 7, 8, 5]
+A.sort()
+print(A)"]
+	1 [label="1
+Assign
+A = [3, 5, 1, 9, 7, 8, 5]"]
+	0 -> 1
+	2 [label="2
+Name
+A"]
+	1 -> 2
+	3 [label="3
+Store
+"]
+	2 -> 3
+	4 [label="4
+List
+[3, 5, 1, 9, 7, 8, 5]"]
+	1 -> 4
+	5 [label="5
+Constant
+3"]
+	4 -> 5
+	6 [label="6
+Constant
+5"]
+	4 -> 6
+	7 [label="7
+Constant
+1"]
+	4 -> 7
+	8 [label="8
+Constant
+9"]
+	4 -> 8
+	9 [label="9
+Constant
+7"]
+	4 -> 9
+	10 [label="10
+Constant
+8"]
+	4 -> 10
+	11 [label="11
+Constant
+5"]
+	4 -> 11
+	12 [label="12
+Load
+"]
+	4 -> 12
+	13 [label="13
+Assign
+n = len(A)"]
+	0 -> 13
+	14 [label="14
+Name
+n"]
+	13 -> 14
+	15 [label="15
+Store
+"]
+	14 -> 15
+	16 [label="16
+Call
+len(A)"]
+	13 -> 16
+	17 [label="17
+Name
+len"]
+	16 -> 17
+	18 [label="18
+Load
+"]
+	17 -> 18
+	19 [label="19
+Name
+A"]
+	16 -> 19
+	20 [label="20
+Load
+"]
+	19 -> 20
+	21 [label="21
+For
+for i in range(n):
+    for j in range(i + 1, n):
+        if A[j] < A[i]:
+            (A[i], A[j]) = (A[j], A[i])"]
+	0 -> 21
+	22 [label="22
+Name
+i"]
+	21 -> 22
+	23 [label="23
+Store
+"]
+	22 -> 23
+	24 [label="24
+Call
+range(n)"]
+	21 -> 24
+	25 [label="25
+Name
+range"]
+	24 -> 25
+	26 [label="26
+Load
+"]
+	25 -> 26
+	27 [label="27
+Name
+n"]
+	24 -> 27
+	28 [label="28
+Load
+"]
+	27 -> 28
+	29 [label="29
+For
+for j in range(i + 1, n):
+    if A[j] < A[i]:
+        (A[i], A[j]) = (A[j], A[i])"]
+	21 -> 29
+	30 [label="30
+Name
+j"]
+	29 -> 30
+	31 [label="31
+Store
+"]
+	30 -> 31
+	32 [label="32
+Call
+range(i + 1, n)"]
+	29 -> 32
+	33 [label="33
+Name
+range"]
+	32 -> 33
+	34 [label="34
+Load
+"]
+	33 -> 34
+	35 [label="35
+BinOp
+i + 1"]
+	32 -> 35
+	36 [label="36
+Name
+i"]
+	35 -> 36
+	37 [label="37
+Load
+"]
+	36 -> 37
+	38 [label="38
+Add
+"]
+	35 -> 38
+	39 [label="39
+Constant
+1"]
+	35 -> 39
+	40 [label="40
+Name
+n"]
+	32 -> 40
+	41 [label="41
+Load
+"]
+	40 -> 41
+	42 [label="42
+If
+if A[j] < A[i]:
+    (A[i], A[j]) = (A[j], A[i])"]
+	29 -> 42
+	43 [label="43
+Compare
+A[j] < A[i]"]
+	42 -> 43
+	44 [label="44
+Subscript
+A[j]"]
+	43 -> 44
+	45 [label="45
+Name
+A"]
+	44 -> 45
+	46 [label="46
+Load
+"]
+	45 -> 46
+	47 [label="47
+Name
+j"]
+	44 -> 47
+	48 [label="48
+Load
+"]
+	47 -> 48
+	49 [label="49
+Load
+"]
+	44 -> 49
+	50 [label="50
+Lt
+"]
+	43 -> 50
+	51 [label="51
+Subscript
+A[i]"]
+	43 -> 51
+	52 [label="52
+Name
+A"]
+	51 -> 52
+	53 [label="53
+Load
+"]
+	52 -> 53
+	54 [label="54
+Name
+i"]
+	51 -> 54
+	55 [label="55
+Load
+"]
+	54 -> 55
+	56 [label="56
+Load
+"]
+	51 -> 56
+	57 [label="57
+Assign
+(A[i], A[j]) = (A[j], A[i])"]
+	42 -> 57
+	58 [label="58
+Tuple
+(A[i], A[j])"]
+	57 -> 58
+	59 [label="59
+Subscript
+A[i]"]
+	58 -> 59
+	60 [label="60
+Name
+A"]
+	59 -> 60
+	61 [label="61
+Load
+"]
+	60 -> 61
+	62 [label="62
+Name
+i"]
+	59 -> 62
+	63 [label="63
+Load
+"]
+	62 -> 63
+	64 [label="64
+Store
+"]
+	59 -> 64
+	65 [label="65
+Subscript
+A[j]"]
+	58 -> 65
+	66 [label="66
+Name
+A"]
+	65 -> 66
+	67 [label="67
+Load
+"]
+	66 -> 67
+	68 [label="68
+Name
+j"]
+	65 -> 68
+	69 [label="69
+Load
+"]
+	68 -> 69
+	70 [label="70
+Store
+"]
+	65 -> 70
+	71 [label="71
+Store
+"]
+	58 -> 71
+	72 [label="72
+Tuple
+(A[j], A[i])"]
+	57 -> 72
+	73 [label="73
+Subscript
+A[j]"]
+	72 -> 73
+	74 [label="74
+Name
+A"]
+	73 -> 74
+	75 [label="75
+Load
+"]
+	74 -> 75
+	76 [label="76
+Name
+j"]
+	73 -> 76
+	77 [label="77
+Load
+"]
+	76 -> 77
+	78 [label="78
+Load
+"]
+	73 -> 78
+	79 [label="79
+Subscript
+A[i]"]
+	72 -> 79
+	80 [label="80
+Name
+A"]
+	79 -> 80
+	81 [label="81
+Load
+"]
+	80 -> 81
+	82 [label="82
+Name
+i"]
+	79 -> 82
+	83 [label="83
+Load
+"]
+	82 -> 83
+	84 [label="84
+Load
+"]
+	79 -> 84
+	85 [label="85
+Load
+"]
+	72 -> 85
+	86 [label="86
+Expr
+print(A)"]
+	0 -> 86
+	87 [label="87
+Call
+print(A)"]
+	86 -> 87
+	88 [label="88
+Name
+print"]
+	87 -> 88
+	89 [label="89
+Load
+"]
+	88 -> 89
+	90 [label="90
+Name
+A"]
+	87 -> 90
+	91 [label="91
+Load
+"]
+	90 -> 91
+	92 [label="92
+Assign
+A = [3, 5, 1, 9, 7, 8, 5]"]
+	0 -> 92
+	93 [label="93
+Name
+A"]
+	92 -> 93
+	94 [label="94
+Store
+"]
+	93 -> 94
+	95 [label="95
+List
+[3, 5, 1, 9, 7, 8, 5]"]
+	92 -> 95
+	96 [label="96
+Constant
+3"]
+	95 -> 96
+	97 [label="97
+Constant
+5"]
+	95 -> 97
+	98 [label="98
+Constant
+1"]
+	95 -> 98
+	99 [label="99
+Constant
+9"]
+	95 -> 99
+	100 [label="100
+Constant
+7"]
+	95 -> 100
+	101 [label="101
+Constant
+8"]
+	95 -> 101
+	102 [label="102
+Constant
+5"]
+	95 -> 102
+	103 [label="103
+Load
+"]
+	95 -> 103
+	104 [label="104
+Assign
+n = len(A)"]
+	0 -> 104
+	105 [label="105
+Name
+n"]
+	104 -> 105
+	106 [label="106
+Store
+"]
+	105 -> 106
+	107 [label="107
+Call
+len(A)"]
+	104 -> 107
+	108 [label="108
+Name
+len"]
+	107 -> 108
+	109 [label="109
+Load
+"]
+	108 -> 109
+	110 [label="110
+Name
+A"]
+	107 -> 110
+	111 [label="111
+Load
+"]
+	110 -> 111
+	112 [label="112
+For
+for i in range(n - 1):
+    for j in range(n - 1):
+        if A[j + 1] < A[j]:
+            (A[j], A[j + 1]) = (A[j + 1], A[j])"]
+	0 -> 112
+	113 [label="113
+Name
+i"]
+	112 -> 113
+	114 [label="114
+Store
+"]
+	113 -> 114
+	115 [label="115
+Call
+range(n - 1)"]
+	112 -> 115
+	116 [label="116
+Name
+range"]
+	115 -> 116
+	117 [label="117
+Load
+"]
+	116 -> 117
+	118 [label="118
+BinOp
+n - 1"]
+	115 -> 118
+	119 [label="119
+Name
+n"]
+	118 -> 119
+	120 [label="120
+Load
+"]
+	119 -> 120
+	121 [label="121
+Sub
+"]
+	118 -> 121
+	122 [label="122
+Constant
+1"]
+	118 -> 122
+	123 [label="123
+For
+for j in range(n - 1):
+    if A[j + 1] < A[j]:
+        (A[j], A[j + 1]) = (A[j + 1], A[j])"]
+	112 -> 123
+	124 [label="124
+Name
+j"]
+	123 -> 124
+	125 [label="125
+Store
+"]
+	124 -> 125
+	126 [label="126
+Call
+range(n - 1)"]
+	123 -> 126
+	127 [label="127
+Name
+range"]
+	126 -> 127
+	128 [label="128
+Load
+"]
+	127 -> 128
+	129 [label="129
+BinOp
+n - 1"]
+	126 -> 129
+	130 [label="130
+Name
+n"]
+	129 -> 130
+	131 [label="131
+Load
+"]
+	130 -> 131
+	132 [label="132
+Sub
+"]
+	129 -> 132
+	133 [label="133
+Constant
+1"]
+	129 -> 133
+	134 [label="134
+If
+if A[j + 1] < A[j]:
+    (A[j], A[j + 1]) = (A[j + 1], A[j])"]
+	123 -> 134
+	135 [label="135
+Compare
+A[j + 1] < A[j]"]
+	134 -> 135
+	136 [label="136
+Subscript
+A[j + 1]"]
+	135 -> 136
+	137 [label="137
+Name
+A"]
+	136 -> 137
+	138 [label="138
+Load
+"]
+	137 -> 138
+	139 [label="139
+BinOp
+j + 1"]
+	136 -> 139
+	140 [label="140
+Name
+j"]
+	139 -> 140
+	141 [label="141
+Load
+"]
+	140 -> 141
+	142 [label="142
+Add
+"]
+	139 -> 142
+	143 [label="143
+Constant
+1"]
+	139 -> 143
+	144 [label="144
+Load
+"]
+	136 -> 144
+	145 [label="145
+Lt
+"]
+	135 -> 145
+	146 [label="146
+Subscript
+A[j]"]
+	135 -> 146
+	147 [label="147
+Name
+A"]
+	146 -> 147
+	148 [label="148
+Load
+"]
+	147 -> 148
+	149 [label="149
+Name
+j"]
+	146 -> 149
+	150 [label="150
+Load
+"]
+	149 -> 150
+	151 [label="151
+Load
+"]
+	146 -> 151
+	152 [label="152
+Assign
+(A[j], A[j + 1]) = (A[j + 1], A[j])"]
+	134 -> 152
+	153 [label="153
+Tuple
+(A[j], A[j + 1])"]
+	152 -> 153
+	154 [label="154
+Subscript
+A[j]"]
+	153 -> 154
+	155 [label="155
+Name
+A"]
+	154 -> 155
+	156 [label="156
+Load
+"]
+	155 -> 156
+	157 [label="157
+Name
+j"]
+	154 -> 157
+	158 [label="158
+Load
+"]
+	157 -> 158
+	159 [label="159
+Store
+"]
+	154 -> 159
+	160 [label="160
+Subscript
+A[j + 1]"]
+	153 -> 160
+	161 [label="161
+Name
+A"]
+	160 -> 161
+	162 [label="162
+Load
+"]
+	161 -> 162
+	163 [label="163
+BinOp
+j + 1"]
+	160 -> 163
+	164 [label="164
+Name
+j"]
+	163 -> 164
+	165 [label="165
+Load
+"]
+	164 -> 165
+	166 [label="166
+Add
+"]
+	163 -> 166
+	167 [label="167
+Constant
+1"]
+	163 -> 167
+	168 [label="168
+Store
+"]
+	160 -> 168
+	169 [label="169
+Store
+"]
+	153 -> 169
+	170 [label="170
+Tuple
+(A[j + 1], A[j])"]
+	152 -> 170
+	171 [label="171
+Subscript
+A[j + 1]"]
+	170 -> 171
+	172 [label="172
+Name
+A"]
+	171 -> 172
+	173 [label="173
+Load
+"]
+	172 -> 173
+	174 [label="174
+BinOp
+j + 1"]
+	171 -> 174
+	175 [label="175
+Name
+j"]
+	174 -> 175
+	176 [label="176
+Load
+"]
+	175 -> 176
+	177 [label="177
+Add
+"]
+	174 -> 177
+	178 [label="178
+Constant
+1"]
+	174 -> 178
+	179 [label="179
+Load
+"]
+	171 -> 179
+	180 [label="180
+Subscript
+A[j]"]
+	170 -> 180
+	181 [label="181
+Name
+A"]
+	180 -> 181
+	182 [label="182
+Load
+"]
+	181 -> 182
+	183 [label="183
+Name
+j"]
+	180 -> 183
+	184 [label="184
+Load
+"]
+	183 -> 184
+	185 [label="185
+Load
+"]
+	180 -> 185
+	186 [label="186
+Load
+"]
+	170 -> 186
+	187 [label="187
+Expr
+print(A)"]
+	0 -> 187
+	188 [label="188
+Call
+print(A)"]
+	187 -> 188
+	189 [label="189
+Name
+print"]
+	188 -> 189
+	190 [label="190
+Load
+"]
+	189 -> 190
+	191 [label="191
+Name
+A"]
+	188 -> 191
+	192 [label="192
+Load
+"]
+	191 -> 192
+	193 [label="193
+Assign
+A = [3, 5, 1, 9, 7, 8, 5]"]
+	0 -> 193
+	194 [label="194
+Name
+A"]
+	193 -> 194
+	195 [label="195
+Store
+"]
+	194 -> 195
+	196 [label="196
+List
+[3, 5, 1, 9, 7, 8, 5]"]
+	193 -> 196
+	197 [label="197
+Constant
+3"]
+	196 -> 197
+	198 [label="198
+Constant
+5"]
+	196 -> 198
+	199 [label="199
+Constant
+1"]
+	196 -> 199
+	200 [label="200
+Constant
+9"]
+	196 -> 200
+	201 [label="201
+Constant
+7"]
+	196 -> 201
+	202 [label="202
+Constant
+8"]
+	196 -> 202
+	203 [label="203
+Constant
+5"]
+	196 -> 203
+	204 [label="204
+Load
+"]
+	196 -> 204
+	205 [label="205
+Expr
+A.sort()"]
+	0 -> 205
+	206 [label="206
+Call
+A.sort()"]
+	205 -> 206
+	207 [label="207
+Attribute
+A.sort"]
+	206 -> 207
+	208 [label="208
+Name
+A"]
+	207 -> 208
+	209 [label="209
+Load
+"]
+	208 -> 209
+	210 [label="210
+Load
+"]
+	207 -> 210
+	211 [label="211
+Expr
+print(A)"]
+	0 -> 211
+	212 [label="212
+Call
+print(A)"]
+	211 -> 212
+	213 [label="213
+Name
+print"]
+	212 -> 213
+	214 [label="214
+Load
+"]
+	213 -> 214
+	215 [label="215
+Name
+A"]
+	212 -> 215
+	216 [label="216
+Load
+"]
+	215 -> 216
+}

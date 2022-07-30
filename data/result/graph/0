@@ -1,0 +1,39 @@
+digraph {
+	0 [label="Module
+from sklearn.datasets import load_diabetes
+from sklearn.linear_model import Ridge
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
+import joblib
+import pandas as pd" penwidth=3]
+	1 [label="ImportFrom
+from sklearn.datasets import load_diabetes" penwidth=3]
+	2 [label="alias
+load_diabetes" penwidth=3]
+	1 -> 2
+	3 [label="ImportFrom
+from sklearn.linear_model import Ridge" penwidth=3]
+	4 [label="alias
+Ridge" penwidth=3]
+	3 -> 4
+	5 [label="ImportFrom
+from sklearn.metrics import mean_squared_error" penwidth=3]
+	6 [label="alias
+mean_squared_error" penwidth=3]
+	5 -> 6
+	7 [label="ImportFrom
+from sklearn.model_selection import train_test_split" penwidth=3]
+	8 [label="alias
+train_test_split" penwidth=3]
+	7 -> 8
+	9 [label="Import
+import joblib" penwidth=3]
+	10 [label="alias
+joblib" penwidth=3]
+	9 -> 10
+	11 [label="Import
+import pandas as pd" penwidth=3]
+	12 [label="alias
+pandas as pd" penwidth=3]
+	11 -> 12
+}

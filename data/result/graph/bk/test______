@@ -1,0 +1,15 @@
+digraph {
+	1 [label=Assign penwidth=3]
+	2 [label=Name penwidth=3]
+	1 -> 2
+	3 [label=Store penwidth=3]
+	2 -> 3
+	4 [label=BinOp penwidth=3]
+	1 -> 4
+	5 [label=Constant penwidth=3]
+	4 -> 5
+	6 [label=Mult penwidth=3]
+	4 -> 6
+	7 [label=Constant penwidth=3]
+	4 -> 7
+}

@@ -1,0 +1,105 @@
+digraph {
+	0 [label="Module
+sample_data = load_diabetes()
+df = pd.DataFrame(data=sample_data.data, columns=sample_data.feature_names)
+df['Y'] = sample_data.target" penwidth=3]
+	1 [label="Assign
+sample_data = load_diabetes()" penwidth=3]
+	2 [label="Name
+sample_data" penwidth=3]
+	1 -> 2
+	3 [label=Store
+ penwidth=3]
+	2 -> 3
+	4 [label="Call
+load_diabetes()" penwidth=3]
+	1 -> 4
+	5 [label="Name
+load_diabetes" penwidth=3]
+	4 -> 5
+	6 [label=Load
+ penwidth=3]
+	5 -> 6
+	7 [label="Assign
+df = pd.DataFrame(data=sample_data.data, columns=sample_data.feature_names)" penwidth=3]
+	8 [label="Name
+df" penwidth=3]
+	7 -> 8
+	9 [label=Store
+ penwidth=3]
+	8 -> 9
+	10 [label="Call
+pd.DataFrame(data=sample_data.data, columns=sample_data.feature_names)" penwidth=3]
+	7 -> 10
+	11 [label="Attribute
+pd.DataFrame" penwidth=3]
+	10 -> 11
+	12 [label="Name
+pd" penwidth=3]
+	11 -> 12
+	13 [label=Load
+ penwidth=3]
+	12 -> 13
+	14 [label=Load
+ penwidth=3]
+	11 -> 14
+	15 [label="keyword
+data=sample_data.data" penwidth=3]
+	10 -> 15
+	16 [label="Attribute
+sample_data.data" penwidth=3]
+	15 -> 16
+	17 [label="Name
+sample_data" penwidth=3]
+	16 -> 17
+	18 [label=Load
+ penwidth=3]
+	17 -> 18
+	19 [label=Load
+ penwidth=3]
+	16 -> 19
+	20 [label="keyword
+columns=sample_data.feature_names" penwidth=3]
+	10 -> 20
+	21 [label="Attribute
+sample_data.feature_names" penwidth=3]
+	20 -> 21
+	22 [label="Name
+sample_data" penwidth=3]
+	21 -> 22
+	23 [label=Load
+ penwidth=3]
+	22 -> 23
+	24 [label=Load
+ penwidth=3]
+	21 -> 24
+	25 [label="Assign
+df['Y'] = sample_data.target" penwidth=3]
+	26 [label="Subscript
+df['Y']" penwidth=3]
+	25 -> 26
+	27 [label="Name
+df" penwidth=3]
+	26 -> 27
+	28 [label=Load
+ penwidth=3]
+	27 -> 28
+	29 [label="Constant
+'Y'" penwidth=3]
+	26 -> 29
+	30 [label=Store
+ penwidth=3]
+	26 -> 30
+	31 [label="Attribute
+sample_data.target" penwidth=3]
+	25 -> 31
+	32 [label="Name
+sample_data" penwidth=3]
+	31 -> 32
+	33 [label=Load
+ penwidth=3]
+	32 -> 33
+	34 [label=Load
+ penwidth=3]
+	31 -> 34
+}

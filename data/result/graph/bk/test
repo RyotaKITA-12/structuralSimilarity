@@ -1,0 +1,67 @@
+digraph {
+	0 [label="Module
+import numpy as np
+import pandas as pd
+df = pd.read_csv('./data.csv', encoding='shift_jis', header=2)
+df" penwidth=3]
+	1 [label="Import
+import numpy as np" penwidth=3]
+	0 -> 1
+	2 [label="alias
+numpy as np" penwidth=3]
+	1 -> 2
+	3 [label="Import
+import pandas as pd" penwidth=3]
+	0 -> 3
+	4 [label="alias
+pandas as pd" penwidth=3]
+	3 -> 4
+	5 [label="Assign
+df = pd.read_csv('./data.csv', encoding='shift_jis', header=2)" penwidth=3]
+	0 -> 5
+	6 [label="Name
+df" penwidth=3]
+	5 -> 6
+	7 [label=Store
+ penwidth=3]
+	6 -> 7
+	8 [label="Call
+pd.read_csv('./data.csv', encoding='shift_jis', header=2)" penwidth=3]
+	5 -> 8
+	9 [label="Attribute
+pd.read_csv" penwidth=3]
+	8 -> 9
+	10 [label="Name
+pd" penwidth=3]
+	9 -> 10
+	11 [label=Load
+ penwidth=3]
+	10 -> 11
+	12 [label=Load
+ penwidth=3]
+	9 -> 12
+	13 [label="Constant
+'./data.csv'" penwidth=3]
+	8 -> 13
+	14 [label="keyword
+encoding='shift_jis'" penwidth=3]
+	8 -> 14
+	15 [label="Constant
+'shift_jis'" penwidth=3]
+	14 -> 15
+	16 [label="keyword
+header=2" penwidth=3]
+	8 -> 16
+	17 [label="Constant
+2" penwidth=3]
+	16 -> 17
+	18 [label="Expr
+df" penwidth=3]
+	0 -> 18
+	19 [label="Name
+df" penwidth=3]
+	18 -> 19
+	20 [label=Load
+ penwidth=3]
+	19 -> 20
+}

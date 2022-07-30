@@ -28,9 +28,16 @@ def visit(node, nodes, pindex, g):
     content = ast.unparse(node)
     index = len(nodes)
     nodes.append(index)
-    g.node(str(index), str(index) + "\n" + name + "\n" + content)
-    if index != pindex:
-        g.edge(str(pindex), str(index))
+    # if index == 0:
+    #     name = "expr"
+    #     g.node(str(index), str(index) + "\n" + name + "\n" + content)
+    # if index != 0:
+    #     g.node(str(index), name, penwidth="3")
+    g.node(str(index), name + "\n" + content, penwidth="3")
+    # g.node(str(index), name, penwidth="3")
+    if pindex != 0:
+        if index != pindex:
+            g.edge(str(pindex), str(index))
     for n in ast.iter_child_nodes(node):
         visit(n, nodes, index, g)
 
